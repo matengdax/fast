@@ -1,0 +1,13 @@
+bindPort = 7000
+
+# Server Dashboard，可以查看frp服务状态以及统计信息
+webServer.addr = "0.0.0.0" # 后台管理地址
+webServer.port = 7001 # 后台管理端口
+webServer.user = "admin" # 后台登录用户名
+webServer.password = "qwer1234" # 后台登录密码
+
+auth.method = "token"
+auth.token = "WaRmDQsNNnac4cvciLNlCprfp91rp"
+
+transport.tls.force = true # 服务端将只接受 TLS 链接
+

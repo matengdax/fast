@@ -1,0 +1,29 @@
+StrictHostKeyChecking no
+#SSH 连接时不检查主机密钥，自动接受新主机或密钥变更
+UserKnownHostsFile /dev/null
+
+ServerAliveInterval 60
+#每隔60本机秒向服务器发送一次心跳包
+ServerAliveCountMax 3
+#最多允许3次心跳包未响应才断开连接
+
+Host ubuntu
+  HostName ubuntu.matengda.com
+  User root
+
+Host fedora 
+  HostName fedora.matengda.com 
+  User root
+
+Host rocky
+  HostName rocky.matengda.com
+  User root
+
+Host node
+  hostname node.matengda.com
+  User root
+
+Host nt
+  HostName nt.matengda.com
+  User administrator
+

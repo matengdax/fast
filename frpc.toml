@@ -1,0 +1,30 @@
+serverAddr = "nt.matengda.com"
+serverPort = 7000
+auth.method = "token"
+auth.token = "WaRmDQsNNnac4cvciLNlCprfp91rp"
+
+#transport.tls.enable = true
+# 从 v0.50.0版本开始，transport.tls.enable的默认值为 true
+
+
+[[proxies]]
+name = "ssh-tcp"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 22
+remotePort = 222
+
+[[proxies]]
+name = "rdp-tcp"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 3389
+remotePort = 33899
+
+[[proxies]]
+name = "rdp-udp"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 3389
+remotePort = 33899
+
