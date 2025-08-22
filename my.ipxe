@@ -1,0 +1,32 @@
+kernel http://10.0.16.11:8000/images/pxeboot/vmlinuz rw ip=10.0.16.2::10.0.16.1:255.255.255.0:myhost.local:eth0:off inst.repo=http://10.0.16.11:8000/
+initrd http://10.0.16.11:8000/images/pxeboot/initrd.img
+
+kernel http://10.0.16.11:8000/images/pxeboot/vmlinuz ip=dhcp inst.repo=http://10.0.16.11:8000/
+
+
+kernel http://10.0.16.11:8000/images/pxeboot/vmlinuz root=/dev/ram0 rd.debug rd.break
+initrd http://10.0.16.11:8000/images/pxeboot/initrd.img
+
+boot
+
+linux16 (hd0,gpt2)/netboot.xyz.lkrn
+
+http://mirrors.cloud.tencent.com/fedora/
+kernel http://mirrors.cloud.tencent.com/fedora/releases/42/Server/x86_64/os/images/pxeboot/vmlinuz inst.repo=http://mirrors.tuna.tsinghua.edu.cn/fedora/releases/42/Server/x86_64/os/ inst.text ip=dhcp console=tty0
+console=ttyS0,9600n8 
+
+BOOTIF=net0/52:54:00:f7:2a:08
+
+initrd=initrd.magic
+kernel http://mirrors.cloud.tencent.com/fedora/releases/42/Server/x86_64/os/images/pxeboot/vmlinuz inst.repo=http://mirrors.cloud.tencent.com/fedora/releases/42/Server/x86_64/os/ inst.graphical ip=dhcp console=tty0
+
+initrd http://mirrors.cloud.tencent.com/fedora/releases/42/Server/x86_64/os/images/pxeboot/initrd.img
+
+boot
+
+
+
+search --fs-uuid --set=root 5CDA-823B
+chainloader /netboot.xyz.efi
+
+chain http://ubuntu.matengda.com:8000/f.ipxe
