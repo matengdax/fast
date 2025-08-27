@@ -28,3 +28,7 @@ localIP = "127.0.0.1"
 localPort = 3389
 remotePort = 33899
 
+# net accounts /lockoutthreshold:0
+# 账户输入错误密码的次数不受限制，永远不会因为输错密码而被锁定
+# 账户锁定策略适用于所有登录方式，包括远程桌面、本地登录、网络登录等。
+# 只要是 Windows 的账户认证，都会受“账户锁定阈值”影响。
