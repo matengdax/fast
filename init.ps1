@@ -58,5 +58,22 @@ pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple some-package
 python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --upgrade pip
 #>
 
-net accounts /lockoutthreshold:0
+
 # Set-ADDefaultDomainPasswordPolicy -LockoutThreshold 0
+net accounts /lockoutthreshold:0
+
+
+# 计算机配置 -> Windows 设置 -> 安全设置 -> 本地策略 -> 安全选项
+# 交互式登录：空闲会话超时，将其设置为 0（禁用超时）
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager" -Name "IdleTimeout" -Value 0
+
+# 本地计算机策略 -> 计算机配置 -> 管理模板 -> Windows 组件 -> 远程桌面服务 -> 远程桌面会话主机 -> 会话时间限制
+# 断开会话时不结束会话：启用
+# MaxIdleTime：设置最大空闲时间为 0，表示禁用空闲会话超时。
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value 0
+# MaxDisconnectionTime：设置断开时间为 0，表示不会强制断开会话
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxDisconnectionTime" -Value 0
+
+# 强制刷新组策略
+gpupdate /force
+
